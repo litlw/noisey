@@ -1,0 +1,19 @@
+{
+  "name": "noisey",
+  "version": "1.0.0",
+  "description": "This is game for people to play using noise",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/litlw/noisey.git"
+  },
+  "author": "Hugh Ritchie",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/litlw/noisey/issues"
+  },
+  "homepage": "https://github.com/litlw/noisey#readme"
+}
