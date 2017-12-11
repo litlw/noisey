@@ -25,10 +25,8 @@
   </div>
   <div class="container-fluid">
     <div class="col-md-offset-1 col-md-4 window window-dark">
-      <p>
-        {{title}}
-
-      </p>
+      <button ng-click="returnList()">Return List</button>
+      <button ng-click="returnSong()">Return Song List</button>
     </div>
     <div class="col-md-offset-1 col-md-10 window window-dark">
 
@@ -53,6 +51,9 @@
     </div>
   </div>
 </div>
-
+<!-- Services -->
+<script src="services/audio.service.js"></script>
+<!-- Controllers -->
+<script src="controller.js"></script>
 </body>
 </html>
