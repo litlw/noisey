@@ -5,6 +5,7 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <!-- providers -->
+  <link href="https://fonts.googleapis.com/css?family=Bungee" rel="stylesheet">
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
@@ -20,34 +21,53 @@
 </head>
 <body ng-app="noiseyApp">
 <div ng-controller="noiseyController">
-  <div class="space">
-
-  </div>
   <div class="container-fluid">
-    <div class="col-md-offset-1 col-md-4 window window-dark">
-      <button ng-click="returnList()">Return List</button>
-      <button ng-click="returnSong()">Return Song List</button>
-    </div>
-    <div class="col-md-offset-1 col-md-10 window window-dark">
-
-    </div>
-    <div class="row content">
-      <div class="col-sm-2 sidenav">
-        <p><a href="#">Link</a></p>
-        <p><a href="#">Link</a></p>
-        <p><a href="#">Link</a></p>
-      </div>
-      <div class="col-sm-8 text-left">
+    <div class="col-md-offset-2 col-md-8">
+      <div class="space">
 
       </div>
-      <div class="col-sm-2 sidenav">
-        <div class="well">
-          <p>ADS</p>
+      <div class="row">
+        <div class="col-md-8">
+          <splash-directive state="state"></splash-directive>
         </div>
-        <div class="well">
-          <p>ADS</p>
+        <div class="col-md-4">
+          <div class="space">
+
+          </div>
+          <div ng-if="state.splash()">
+            <p class="text-white">
+              The game where <strong>you choose</strong> what sounds best!
+            </p>
+            <button class="btn btn-white" ng-click="state.step()">New Game!</button>
+          </div>
+          <div ng-if="state.one()">
+            <content>
+              <h3 class="text-white">
+                Players, go to <strong>this url</strong> and type in <div class="well text-dark">{{code}}</div>
+              </h3>
+              <div ng-repeat="player in players">
+                <new-game-directive player="player" ></new-game-directive>
+              </div>
+
+              <h3 class="text-white">
+                When all the players are onscreen, press Begin
+              </h3>
+              <button class="btn btn-white">Begin</button>
+            </content>
+          </div>
+
         </div>
       </div>
+      <div class="row" ng-if="state.two()">
+        <game-directive></game-directive>
+
+      </div>
+      <div class="row" ng-if="state.three()">
+        <player-directive></player-directive>
+
+      </div>
+    </div>
+
     </div>
   </div>
 </div>
@@ -55,5 +75,10 @@
 <script src="services/audio.service.js"></script>
 <!-- Controllers -->
 <script src="controller.js"></script>
+<!-- Directives -->
+<script src="directives/gameWindow.directive.js"></script>
+<script src="directives/newGame.directive.js"></script>
+<script src="directives/player.directive.js"></script>
+<script src="directives/splash.directive.js"></script>
 </body>
 </html>

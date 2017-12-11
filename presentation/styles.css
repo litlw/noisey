@@ -1,5 +1,6 @@
 body{
-  background: #444;
+  background: #444; /* for old browsers */
+  background: -moz-linear-gradient(top, #4c4c4c 0%, #131313 100%);
 }
 .window{
   padding: 10px;
@@ -14,4 +15,13 @@ body{
 .window-accent{}
 .space{
   min-height: 100px;
+}
+.text{
+  font-family: 'Bungee';
+}
+.text-white{
+  color: white;
+}
+.text-dark{
+  color: #444;
 }
