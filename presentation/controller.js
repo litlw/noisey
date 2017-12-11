@@ -1,4 +1,4 @@
-app.controller("noiseyController", function($scope, $http, audioService){
+app.controller("noiseyController", function($scope, $http, audioService, pubnub){
   var topics = ['funny', 'goofy', 'silly', 'cartoon', 'cinematic', 'effect'];
   var id_list;
   audioService.generate_list(topics, (res)=>{
@@ -24,8 +24,13 @@ app.controller("noiseyController", function($scope, $http, audioService){
   $scope.state = {
     step:()=>{
         if(state == 0){
+          pubnub.connect($scope.code, ()=>{
+            console.log("connected!");
+            // nothing happens here.
+          })
           state = 1;
         }else if(state == 1){
+
           state = 2;
         } else if(state == 2){
           state = 3;
@@ -33,11 +38,13 @@ app.controller("noiseyController", function($scope, $http, audioService){
           state = 0;
         }
     }, splash: ()=>{
+
       if(state == 0){
         return true;
       } else {
         return false;
       }
+
     }, one: ()=>{
       if(state == 1){
         return(true);

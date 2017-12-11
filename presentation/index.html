@@ -8,14 +8,13 @@
   <link href="https://fonts.googleapis.com/css?family=Bungee" rel="stylesheet">
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+  <script src="node_modules/pubnub/dist/web/pubnub.js"></script>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
-  <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.6/angular.js">
-  <script src="https://cdn.pubnub.com/sdk/javascript/pubnub.4.19.0.min.js"></script>
-
-
+  <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.6/angular.js"></script>
   <!-- providers -->
   <!-- services -->
   <script src="index.js"></script>
+  <script src="controller.js"></script>
   <link rel="stylesheet" href="styles.css" />
   <!-- services -->
 </head>
@@ -73,8 +72,9 @@
 </div>
 <!-- Services -->
 <script src="services/audio.service.js"></script>
+<script src="services/pubnub.service.js"></script>
 <!-- Controllers -->
-<script src="controller.js"></script>
+
 <!-- Directives -->
 <script src="directives/gameWindow.directive.js"></script>
 <script src="directives/newGame.directive.js"></script>

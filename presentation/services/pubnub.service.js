@@ -4,7 +4,7 @@ app.factory('pubnub', function() {
     pubKey: 'pub-c-46004153-6eb2-4bf6-aedd-163660eb6fc5', // my key
     subKey: 'sub-c-e6f1e7a4-bfd3-11e7-930d-6a99ed520776' // my key
   }
-
+  // i am refactoring code from my GeoPresentation repo
   // Initialize the PubNub API connection.
 
   return {
@@ -15,6 +15,7 @@ app.factory('pubnub', function() {
           publishKey: creds.pubKey,
           subscribeKey: creds.subKey
         })
+        console.log(pubnub);
         pubnub.addListener({
           status: function(statusEvent) {
             if (statusEvent.category === "PNConnectedCategory") {
