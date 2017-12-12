@@ -1,5 +1,27 @@
 app.controller("noiseyController", function($scope, $http, audioService, pubnub){
 
+  var channel
+
+  $scope.user = {
+    register: (code, username)=>{
+      if(!code){
+        window.alert("Code Required to enter. ")
+      }else{
+        channel = code;
+        if(!username){
+          window.alert("Please enter a Username. ")
+        }else{
+          $scope.state.step();
+          pubnub.send(code, username, (response)=>{
+            console.log(response);
+          });
+        }
+      }
+    },
+  }
+  pubnub.connect(channel, message=>{
+    // this is the logic im gonna use for the user. 
+  })
   $scope.returnSong = function(){
     used_id = []
     listed_songs = []
@@ -15,19 +37,7 @@ app.controller("noiseyController", function($scope, $http, audioService, pubnub)
   }
   var state = 0;
   $scope.enter = (code, username)=>{
-    if(!code){
-      window.alert("Code Required to enter. ")
-    }else{
-      if(!username){
-        window.alert("Please enter a Username. ")
-      }else{
-        $scope.state.step();
-        pubnub.connect(code)
-        pubnub.message(code, username, (response)=>{
-          console.log(response);
-        });
-      }
-    }
+
   }
 
   $scope.state = {
