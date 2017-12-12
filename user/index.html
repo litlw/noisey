@@ -9,7 +9,7 @@
   <link href="https://fonts.googleapis.com/css?family=Bungee" rel="stylesheet">
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
   <link rel = "stylesheet"href = "styles.css" / >
-
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" />
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
   <script src="https://cdn.pubnub.com/sdk/javascript/pubnub.4.19.0.min.js"></script>
@@ -25,7 +25,7 @@
       <div class="container-fluid">
         <div class="col-xs-offset-2 col-xs-8">
           <div class="space"></div>
-          <div class="row">
+          <div class="row" ng-if="state.splash()">
             <content class="col-xs-12">
               <h1 class="text center text-white">noisey</h1>
               <img width="100%" class="center" src="assets/img/music.svg" />
@@ -36,6 +36,25 @@
               <input type="text" class="btn-light" ng-model="code" placeholder="Enter Room Code"></textarea>
               <input type="text" class="btn-light" ng-model="username" placeholder="Create a Unique Username"></textarea>
               <span width="100%" class="btn btn-light" ng-click="enter(code, username)"><text class="text">Enter</text></span>
+
+            </content>
+          </div>
+          <div class="row" ng-if="state.one()">
+            <content class="col-xs-12">
+              <h3 class="text center text-white">
+                {{user.username}} <br />
+                <i class="fa fa-lg" ng-class="user.icon"></i>
+              </h3>
+              <div class="space">
+
+              </div>
+              <h3 class="text center text-white"> Your Topic is: </h3>
+              <h4 class="text center text-accent">{{round.topic}}</h4>
+            </content>
+            <content class="col-xs-12 song" ng-repeat="song in round.songs">
+              <div class="song center" ng-click="round.choose(user.username, user.channel, song)">
+                <h4 class="text center">{{song}}</h4>
+              </div>
             </content>
           </div>
         </div>

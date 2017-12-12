@@ -1,26 +1,42 @@
-app.controller("noiseyController", function($scope, $http, audioService, pubnub){
+app.controller("noiseyController", function($scope, $http, audioService, pubnub, playerService){
 
-  var channel
+
+  $scope.enter = (code, username)=>{
+    if(!code){
+      window.alert("Code Required to enter. ")
+    } else {
+      if(!username){
+        window.alert("Please enter a Username. ")
+      } else {
+        $scope.user.channel = code;
+        $scope.user.username = username;
+        $scope.user.register(code, username);
+      }
+    }
+  }
+  $scope.round = {
+    songs: ['Song 1', 'Monkeybones', 'THis is a song too', 'Holy Fucknuts'],
+    topic: 'This is a topic you can choose a sound for.',
+    choose: (username, channel, song)=>{
+      console.log(username);
+      console.log(channel);
+      console.log(song);
+    }
+  }
 
   $scope.user = {
+    channel: '',
+    username: '',
+    icon: 'fa-beer',
     register: (code, username)=>{
-      if(!code){
-        window.alert("Code Required to enter. ")
-      }else{
-        channel = code;
-        if(!username){
-          window.alert("Please enter a Username. ")
-        }else{
-          $scope.state.step();
-          pubnub.send(code, username, (response)=>{
-            console.log(response);
-          });
-        }
-      }
-    },
+      $scope.state.step();
+      pubnub.send(code, username, (response)=>{
+        console.log(response);
+      });
+    }
   }
-  pubnub.connect(channel, message=>{
-    // this is the logic im gonna use for the user. 
+  pubnub.connect($scope.user.channel, message=>{
+    // this is the logic im gonna use for the user.
   })
   $scope.returnSong = function(){
     used_id = []
@@ -36,9 +52,7 @@ app.controller("noiseyController", function($scope, $http, audioService, pubnub)
     return(listed_songs);
   }
   var state = 0;
-  $scope.enter = (code, username)=>{
 
-  }
 
   $scope.state = {
     step:()=>{

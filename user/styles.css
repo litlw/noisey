@@ -29,6 +29,15 @@ body{
 .text-dark{
   color: #444;
 }
+.text-accent{
+  color: #E80C49;
+}
+.song{
+  padding: 6px;
+  background: white;
+  border-radius: 6px;
+  margin: 5px;
+}
 .btn-light{
   background: white;
   width: 100%;
