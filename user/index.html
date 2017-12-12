@@ -1,76 +1,53 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <title>Bootstrap Example</title>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <!-- providers -->
+  <link href="https://fonts.googleapis.com/css?family=Bungee" rel="stylesheet">
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+  <link rel = "stylesheet"href = "styles.css" / >
+
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
   <script src="https://cdn.pubnub.com/sdk/javascript/pubnub.4.19.0.min.js"></script>
-  <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.6/angular.min.js">
-  <!-- providers -->
-  <!-- services -->
-  <script src="index.js"></script>
-  <link rel="stylesheet" href="styles.css" />
-  <!-- services -->
-  </style>
+  <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.6/angular.js"></script>
+
+  <script src='index.js' ></script>
+  <script src="controller.js"></script>
 </head>
+
 <body>
-<div ng-app="noiseyApp">
-  <div ng-controller="noiseyController">
-    <div class="container-fluid">
-      <div class="col-md-offset-2 col-md-8">
-        <div class="space">
-
-        </div>
-        <div class="row">
-          <div class="col-md-8">
-            <splash-directive state="state"></splash-directive>
-          </div>
-          <div class="col-md-4">
-            <div class="space">
-
-            </div>
-            <div ng-if="state.splash()">
-              <p class="text-white">
-                The game where <strong>you choose</strong> what sounds best!
-              </p>
-              <button class="btn btn-white" ng-click="state.step()">New Game!</button>
-            </div>
-            <div ng-if="state.one()">
-              <content>
-                <h3 class="text-white">
-                  Players, go to <strong>this url</strong> and type in <div class="well text-dark">{{code}}</div>
-                </h3>
-                <div ng-repeat="player in players">
-                  <new-game-directive player="player" ></new-game-directive>
-                </div>
-
-                <h3 class="text-white">
-                  When all the players are onscreen, press Begin
-                </h3>
-                <button class="btn btn-white">Begin</button>
-              </content>
-            </div>
-
+  <div ng-app="noiseyApp">
+    <div ng-controller="noiseyController">
+      <div class="container-fluid">
+        <div class="col-xs-offset-2 col-xs-8">
+          <div class="space"></div>
+          <div class="row">
+            <content class="col-xs-12">
+              <h1 class="text center text-white">noisey</h1>
+              <img width="100%" class="center" src="assets/img/music.svg" />
+            </content>
+            <content class="col-xs-12">
+              <!-- <div class="space"></div> -->
+              <br /><br />
+              <input type="text" class="btn-light" ng-model="code" placeholder="Enter Room Code"></textarea>
+              <input type="text" class="btn-light" ng-model="username" placeholder="Create a Unique Username"></textarea>
+              <span width="100%" class="btn btn-light" ng-click="enter(code, username)"><text class="text">Enter</text></span>
+            </content>
           </div>
         </div>
-        <div class="row" ng-if="state.two()">
-          <game-directive></game-directive>
-
-        </div>
-        <div class="row" ng-if="state.three()">
-          <player-directive></player-directive>
-
-        </div>
-      </div>
 
       </div>
     </div>
-    <!-- Services -->
-    <!-- Directives -->
-</div>
+  </div>
+  <!-- Services -->
+  <script src="services/audio.service.js"></script>
+  <script src="services/pubnub.service.js"></script>
+  <script src="services/player.service.js"></script>
+  <!-- Directives -->
 </body>
+
 </html>

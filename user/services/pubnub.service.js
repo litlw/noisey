@@ -59,10 +59,8 @@ app.factory('pubnub', function() {
             },
             function(status, response) {
               if (status.error) {
-                // handle error
-                console.log(status)
+                callback(status.error)
               } else {
-                console.log(response);
                 callback("message Published w/ timetoken", response)
               }
             }

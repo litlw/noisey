@@ -19,9 +19,20 @@ body{
 .text{
   font-family: 'Bungee';
 }
+.center{
+  text-align: center;
+  margin: auto;
+}
 .text-white{
   color: white;
 }
 .text-dark{
   color: #444;
+}
+.btn-light{
+  background: white;
+  width: 100%;
+  padding: 3px;
+  border-radius: 5px;
+  border: 2px solid #444;
 }
