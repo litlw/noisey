@@ -21,5 +21,10 @@ Working features:
 - registering topic question
 - registering random avatar for user.
 
+To use this:
+- presentation runs on independant server
+- multiple instances of User need to run
+  - 2+ users must be registered. 
 
-Maybe I'll develop on this further. sorry it doesnt work as is. 
+
+Maybe I'll develop on this further. sorry it doesnt work as is.
