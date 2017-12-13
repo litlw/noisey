@@ -10,7 +10,11 @@ app.controller("noiseyController", function($scope, $http, audioService, pubnub,
       } else {
         $scope.user.channel = code;
         $scope.user.username = username;
-        $scope.user.register(code, username);
+        var message = {
+          username: username,
+          user: true
+        }
+        $scope.user.register(code, message);
       }
     }
   }

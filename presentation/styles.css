@@ -8,6 +8,10 @@ body{
   border-radius: 20px;
   min-height: 100px;
 }
+.center{
+  text-align: center;
+  margin: auto;
+}
 .window-dark{
   background-color: #111;
 }
@@ -24,4 +28,20 @@ body{
 }
 .text-dark{
   color: #444;
+}
+.song{
+  padding: 6px;
+  background: white;
+  border-radius: 6px;
+  margin: 5px;
+}
+.song>text{
+  float: right;
+}
+.btn-light{
+  background: white;
+  width: 100%;
+  padding: 3px;
+  border-radius: 5px;
+  border: 2px solid #444;
 }
