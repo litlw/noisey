@@ -48,12 +48,13 @@ app.factory('pubnub', function() {
         });
       };
     },
-    send: function(channel, data, callback) {
+    send: function(channel, data, arr, callback) {
       if (data) {
         if (callback) {
           pubnub.publish({
               message: {
-                text: data
+                text: data,
+                objects: arr
               },
               channel: channel
             },

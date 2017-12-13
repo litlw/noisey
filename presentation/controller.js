@@ -19,32 +19,37 @@ app.controller("noiseyController", function($scope, $http, audioService, pubnub,
 
   $scope.session = {
     begin: function(){
-      var leader = Math.floor(Math.random()*$scope.users.length);
-      $scope.users[leader].state = "leading"
-      var message = {
-        username: $scope.users[leader].username,
-        sessionUpdate: true,
-        state: "leading"
-      }
-      pubnub.send($scope.code, message, res=>{
-        console.log(res);
-      });
-      for(u in $scope.users){
-        if(u != leader){
+      // var leader = $scope.users[Math.floor(Math.random()*$scope.users.length)].username;
+      // $scope.users.every(user=>{
+        // if(user.username != leader){
+          var object = []
+          var message = {
+            // username: user.username,
+            sessionUpdate: true,
+            state: "playing"
+          }
           $scope.returnSong(response=>{
-            console.log(response);
-            var message = {
-              username: $scope.users[u].username,
-              sessionUpdate: true,
-              state: "playing",
-              songs: response
-            }
-            pubnub.send($scope.code, message, res=>{
-              console.log(res);
-            })
+            object.push(response.data);
+
+            console.log(object);
+            // pubnub.send($scope.code, message, [{"name": "mike"}, "Turtles", response], res=>{
+            //   console.log(res);
+            // })
           })
-        }
-      }
+          console.log("array is " + object);
+          console.log("array at 0 is " + object[0]);
+        // } else {
+          // user.state = "leading"
+          var message = {
+            // username: user.username,
+            sessionUpdate: true,
+            state: "leading"
+          }
+          pubnub.send($scope.code, message, res=>{
+            console.log(res);
+          });
+      //   }
+      // })
     }
   }
 //
@@ -76,13 +81,16 @@ app.controller("noiseyController", function($scope, $http, audioService, pubnub,
   }
   $scope.returnSong = function(callback){
     var listed_songs = []
-    for(var i = 0;i<7;i++){
+    for(var i = 0;i<4;i++){
       id = id_list[Math.floor(Math.random()*id_list.length)];
       audioService.get_song(id, (res)=>{
+        console.log("results from audioService inner are " + res);
         listed_songs.push(res);
       });
     }
-    callback(listed_songs);
+    console.log(listed_songs);
+    console.log("results from audioservice are " + listed_songs.toString());
+    callback(listed_songs)
   }
   var state = 0;
   $scope.state = {

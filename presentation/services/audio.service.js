@@ -30,10 +30,12 @@ app.factory("audioService", function($http){
           if(!data){
             response("There was an error with the request.")
           }
-          response({
+          var results = {
             name: data.data.name,
             url: data.data.previews['preview-lq-mp3']
-          });
+          }
+          // console.log("results from get_song are " + JSON.stringify(results));
+          response(JSON.stringify(results));
         });
       }
     }
